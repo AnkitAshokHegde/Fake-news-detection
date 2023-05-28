@@ -10,4 +10,4 @@
 - Reviewer front-end
 - Publisher front-end
 
-Run these front-ends seperately by using `npm install` and `npm start` commands.
+Run these seperately by using `npm install` and `npm start` commands.
