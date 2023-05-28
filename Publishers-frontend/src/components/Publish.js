@@ -8,8 +8,8 @@ function Publish() {
     const handleOnSubmit = (e) => {
       fetch("http://localhost:5000",{
         body:JSON.stringify(
-            {news_tit:news_title,
-            news_con:news_content}
+            {news_tittle:news_title,
+            news_connect:news_content}
         ),
         method: "POST"
       });
