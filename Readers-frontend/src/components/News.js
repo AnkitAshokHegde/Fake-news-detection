@@ -68,6 +68,8 @@ import PropTypes from "prop-types";
 //   },);
 
 const News = (props) => {
+  const [totalArticles, settotalArticles] = useState([]);
+  const [pg, setPg] = useState(1);
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(false);
   // const [pg, setPg] = useState([]);
@@ -76,11 +78,13 @@ const News = (props) => {
   }, []);
 
   const getNews = async () => {
+    window.scroll(0,0);
     const url = `http://localhost:5001/newsData`;
     setLoading(true);
     let data = await fetch(url);
     data = await data.json();
     setArticles(data);
+    settotalArticles(data.totalArticles);
     setLoading(false);
     console.log(data);
   }
@@ -110,16 +114,14 @@ const News = (props) => {
             articles.map((items, _id) => (
               <div className="col-md-4 col-sm-6 col-xs-12" key={_id}>
                 <NewsItem
-                  // title={(items.title ? items.title.slice(0, 45) : "") + ".."}
-                  // description={(items.description ? items.description.slice(0, 150) : "") + "..."}
                   // imageURL={
                   //   items.urlToImage
                   //     ? items.urlToImage
                   //     : "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/120px-No_image_available.svg.png"
                   // }
                   // newsURL={items.url}
-                  title={(items.newsTitle)}
-                  description={(items.newsContent)}
+                  title={(items.newsTitle? items.newsTitle.slice(0,45) : "") + "..."}
+                  description={(items.newsContent? items.newsContent.slice(0,150) : "") + "..."}
                 />
               </div>
             ))}
@@ -128,7 +130,7 @@ const News = (props) => {
       {/* previous pgno. and next buttons */}
       <div className="container-fluid page-button my-4 mx-2">
         <button
-          // disabled={pg <= 1}
+          disabled={pg <= 1}
           className="btn-sm btn btn-color mx-5"
           onClick={handlePrevious}
         >
@@ -136,10 +138,10 @@ const News = (props) => {
           &#10232;
         </button>
         <div className="page-count">
-          {/* {pg} */}
+          {pg}
           </div>
         <button
-          // disabled={!(pg + 1 <= Math.ceil(totalArticles / 12))}
+          disabled={!(pg + 1 <= Math.ceil(totalArticles / 12))}
           className="btn-sm btn btn-color mx-5"
           onClick={handleNext}
         >

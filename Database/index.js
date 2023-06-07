@@ -10,11 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/newsData", async (req, resp) => {
-    // const NewsData = NewsModel(req.body);        
-    // console.log(req);
-    // const result = await NewsData.save();
-    // resp.send(result);
-
+    
     const NewsData = await NewsModel.find();
 
     if (NewsData.length > 0) {
@@ -25,15 +21,12 @@ app.get("/newsData", async (req, resp) => {
     }
 });
 
-app.get("/", async (req, resp) => {
-    // const NewsData = NewsModel(req.body);        
-    // console.log(req);
-    // const result = await NewsData.save();
-    // resp.send(result);
-
-    resp.send("Hi");
+app.post("/publish", async (req, resp) => {
+    const NewsData = NewsModel(req.body);        
+    console.log(req);
+    const result = await NewsData.save();
+    resp.send(result);    
 });
-
 
 const port = 5001;
 

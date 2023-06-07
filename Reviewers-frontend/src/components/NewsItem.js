@@ -19,7 +19,7 @@ const NewsItem = (props) => {
             <button
               href="#"
               target="_blank"
-              className="ml-4 btn btn-sm btn-danger"
+              className="m-1 btn btn-sm btn-danger"
             >
               Vote
             </button>
