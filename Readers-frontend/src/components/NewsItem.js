@@ -7,11 +7,6 @@ const NewsItem = (props) => {
   return (
     <div className="my-3">
       <div className="card">
-        {/* <img
-          className="card-img-top image-select-news"
-          src={props.imageURL}
-          alt="Card image cap"
-        /> */}
         <div className="card-body">
           <h5 className="card-title">
             {props.title}
@@ -21,14 +16,6 @@ const NewsItem = (props) => {
           </h5>
           <p className="card-text">{props.description}</p>
           <div className="d-flex justify-content-around">
-            {/* <a
-              href={props.newsURL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-sm btn-primary"
-            >
-              Read more
-            </a> */}
           </div>
         </div>
       </div>
@@ -37,3 +24,22 @@ const NewsItem = (props) => {
 };
 
 export default NewsItem;
+
+
+
+
+
+{/* <img
+  className="card-img-top image-select-news"
+  src={props.imageURL}
+  alt="Card image cap"
+/> */}
+
+{/* <a
+  href={props.newsURL}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="btn btn-sm btn-primary"
+>
+  Read more
+</a> */}

@@ -11,44 +11,48 @@ const News = (props) => {
 
   const handleNext = async () => {
     window.scrollTo(0, 0);
-    const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=f59178ab70df48bc83797911eebc20d9&page=${
-      pg + 1
-    }&pageSize=${props.pageSize}`;
+    // const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=f59178ab70df48bc83797911eebc20d9&page=${
+    //   pg + 1
+    // }&pageSize=${props.pageSize}`;
 
-    setLoading(true);
-    const data = await fetch(url);
-    const parsedData = await data.json();
-    setPg(pg + 1);
-    setArticles(parsedData.articles);
+    // setLoading(true);
+    // const data = await fetch(url);
+    // const parsedData = await data.json();
+    // setPg(pg + 1);
+    // setArticles(parsedData.articles);
     setLoading(false);
   };
 
   const handlePrevious = async () => {
     window.scrollTo(0, 0);
-    const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=f59178ab70df48bc83797911eebc20d9&page=${
-      pg - 1
-    }&pageSize=${props.pageSize}`;
+    // const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=f59178ab70df48bc83797911eebc20d9&page=${
+    //   pg - 1
+    // }&pageSize=${props.pageSize}`;
 
-    setLoading(true);
-    const data = await fetch(url);
-    const parsedData = await data.json();
+    // setLoading(true);
+    // const data = await fetch(url);
+    // const parsedData = await data.json();
 
-    setPg(pg - 1);
-    setArticles(parsedData.articles);
+    // setPg(pg - 1);
+    // setArticles(parsedData.articles);
     setLoading(false);
   };
 
   useEffect(() => {
     const fetchData = async () => {
       window.scrollTo(0, 0);
-      const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=f59178ab70df48bc83797911eebc20d9&page=1&pageSize=${props.pageSize}`;
-
+      // const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=f59178ab70df48bc83797911eebc20d9&page=1&pageSize=${props.pageSize}`;
+      // don't know if works
+      const url = `http://localhost:5001/newsData`;
       setLoading(true);
       const data = await fetch(url);
       const parsedData = await data.json();
 
       setArticles(parsedData.articles);
       setTotalArticles(parsedData.totalResults);
+
+
+
       setLoading(false);
     };
 

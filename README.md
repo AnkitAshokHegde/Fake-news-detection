@@ -1,6 +1,6 @@
 # Fake News detection using block chain
 
-**Problem Statement:** *Decentralized distributed ledger based pool voting system to combat fake news articles*
+**Problem Statement:** *"Decentralized distributed ledger based pool voting system to combat fake news articles"*
 
 ### How to run :
 
@@ -10,4 +10,6 @@
 - Reviewer front-end
 - Publisher front-end
 
-Run these seperately by using `npm install` and `npm start` commands.
+**Also, there is a backend part as a seperate component**
+
+Run these seperately by using `npm install` and `npm start`.

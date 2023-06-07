@@ -1,16 +1,42 @@
 const express = require("express");
-const mongoose = require("mongoose");
+const cors = require("cors");
+
+require("./db/config");
+const NewsModel = require("./db/NewsModel");
 
 const app = express();
 
-const ConnectDB = async()=>{
-    mongoose.connect("mongodb://localhost:27017/News");
-    const newsSchema = new mongoose.Schema({});
-    const newsCollection = mongoose.model("news",newsSchema)
-    const data = await newsCollection.find();
-    console.log(data);
-}
+app.use(cors());
+app.use(express.json());
 
-ConnectDB();
-app.listen(5000);
+app.get("/newsData", async (req, resp) => {
+    // const NewsData = NewsModel(req.body);        
+    // console.log(req);
+    // const result = await NewsData.save();
+    // resp.send(result);
 
+    const NewsData = await NewsModel.find();
+
+    if (NewsData.length > 0) {
+        resp.send(NewsData);
+    }
+    else {
+        resp.send({ result: "No news articles yet" });
+    }
+});
+
+app.get("/", async (req, resp) => {
+    // const NewsData = NewsModel(req.body);        
+    // console.log(req);
+    // const result = await NewsData.save();
+    // resp.send(result);
+
+    resp.send("Hi");
+});
+
+
+const port = 5001;
+
+app.listen(port, () => {
+    console.log("Server is running on the port number : " + port);
+});
