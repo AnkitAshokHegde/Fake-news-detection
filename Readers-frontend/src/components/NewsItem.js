@@ -4,14 +4,18 @@ import unverified from "./unverified.jpg";
 import verifiedFake from "./verified_fake.jpg";
 
 const NewsItem = (props) => {
+  
+  console.log(props.newsStatus);
   return (
     <div className="my-3">
       <div className="card">
         <div className="card-body">
           <h5 className="card-title">
-            {props.title}
+            {props.title}            
             <span className="badge">
-              <img className="image-select-" src={unverified} alt="Unverified" />
+              <img className="image-select-" src={
+                (props.newsStatus===0)? unverified : ((props.newsStatus===1)? verified : verifiedFake)               
+              } alt="Unverified" />
             </span>
           </h5>
           <p className="card-text">{props.description}</p>

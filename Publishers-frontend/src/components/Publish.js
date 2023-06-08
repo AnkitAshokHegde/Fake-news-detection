@@ -19,19 +19,29 @@ function Publish() {
 
     const[newsTitle, setnewsTitle] = useState('');
     const[newsContent, setnewsContent] = useState('');
+    const[newsStatus, setnewsStatus] = useState(0);
 
-    const handleOnSubmit = async ()=>{        
-        const url = `http://localhost:5001/publish`;
+    const handleOnSubmit = async ()=>{     
+        try{   
+        const url = `http://localhost:5001/publish`;    
+        setnewsStatus(0);    
         let data = await fetch(url,{
             method:"post",
-            body:JSON.stringify({newsContent, newsTitle}),
+            body:JSON.stringify({newsContent, newsTitle, newsStatus}),
             headers:{
                 "Content-type":"application/json"
             }
         });
 
+        console.log(newsTitle, newsStatus, newsContent);
+
         data = await data.json();
-        console.log(data);
+        window.alert("Article submitted !!!");
+
+    }
+    catch(e){
+        console.log("Error while hanlding submit"+e);
+    }
     }
 
     
@@ -51,7 +61,7 @@ function Publish() {
                             <div className="form-group text-light">
                                 <label for="newsTitle" className="h2">News Title</label>
                                 <textarea id="news_title" onChange={(e)=>{
-                                    setnewsTitle(e.target.value);
+                                    setnewsTitle(e.target.value);                                    
                                 }} 
                                 className="form-control" rows="1"></textarea>
                             </div>

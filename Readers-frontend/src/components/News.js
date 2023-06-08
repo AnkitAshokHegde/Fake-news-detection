@@ -3,6 +3,11 @@ import Loading from "./Loading";
 import NewsItem from "./NewsItem";
 import PropTypes from "prop-types";
 
+
+import verified from "./verified.jpg";
+import unverified from "./unverified.jpg";
+import verifiedFake from "./verified_fake.jpg";
+
 // function News(props) {
 //   const [loading, setLoading] = useState(false);
 //   const [articles, setArticles] = useState([]);
@@ -122,6 +127,7 @@ const News = (props) => {
                   // newsURL={items.url}
                   title={(items.newsTitle? items.newsTitle.slice(0,45) : "") + "..."}
                   description={(items.newsContent? items.newsContent.slice(0,150) : "") + "..."}
+                  newsStatus={(items.newsStatus)}                  
                 />
               </div>
             ))}
