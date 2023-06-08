@@ -2,20 +2,12 @@ import { stringify } from "querystring";
 import React, { Component, useState } from "react";
 import Loading from "./Loading";
 
+import 'react-notifications/lib/notifications.css';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+
 let news_title;
 let news_content;
 function Publish() {
-
-    // const handleOnSubmit = (e) => {
-    //   fetch("http://localhost:5000/publish",{        
-    //     body: JSON.stringify(
-    //         {newsTitle:news_title,
-    //         newsContent:news_content}
-    //     ),
-    //     method: "POST"
-    //   });    
-    // console.log(newsTitleValue, newsContentValue);
-    // }
 
     const[newsTitle, setnewsTitle] = useState('');
     const[newsContent, setnewsContent] = useState('');
@@ -38,7 +30,9 @@ function Publish() {
         console.log(newsTitle, newsStatus, newsContent);
 
         data = await data.json();
-        window.alert("Article submitted !!!");
+        // window.alert("Article submitted !!!");
+        // Don't know if it works or not
+        NotificationManager.success('The article has been submitted', 'Success');
 
         setnewsTitle('');
         setnewsContent('');
@@ -48,7 +42,6 @@ function Publish() {
         console.log("Error while hanlding submit"+e);
     }
     }
-
     
     return (
         <>            
@@ -81,7 +74,11 @@ function Publish() {
                                 className="form-control" rows="15"></textarea>
                             </div>
                             <div className="d-flex justify-content-center">
-                                <button disabled={ !newsTitle || !newsContent } type="button" onClick={handleOnSubmit} className="btn btn-primary" >Submit Article</button>
+                                <button disabled={ !newsTitle || !newsContent } type="button" onClick={handleOnSubmit} className="btn btn-primary" >Submit Article</button>                                
+                                <NotificationContainer/>
+                            </div>
+                            <div>
+                            
                             </div>
                         </form>
                     </div>

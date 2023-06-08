@@ -197,7 +197,7 @@ const News = (props)=>{
           {pg}
           </div>
         <button
-          disabled={!(pg + 1 <= Math.ceil(totalArticles / 12))}
+          disabled={!(pg + 1 <= Math.ceil(totalArticles / 9))}
           className="btn-sm btn btn-color mx-5"
           onClick={handleNext}
         >
