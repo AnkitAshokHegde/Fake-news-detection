@@ -40,6 +40,7 @@ function Publish() {
     }
     catch(e){
         console.log("Error while hanlding submit"+e);
+        NotificationManager.error('Something has gone wrong', 'Error');
     }
     }
     
