@@ -26,9 +26,15 @@ const NewsItem = (props) => {
       console.log("Not vote value , "+"Vote value : "+ voteValue);                  
     }
     else {      
-      NotificationManager.success('Your vote for the news - \"'+ props.title + '\" is : '+voteValue.toUpperCase(),'Vote submitted');
-      handleReset();
+      const confirmBox = window.confirm(
+        "Are you sure ?  your vote value is : \" "+voteValue.toUpperCase() + " \""
+      )
+      if (confirmBox === true) {
+        NotificationManager.success('Your vote for the news - \"'+ props.title + '\" is : '+voteValue.toUpperCase(),'Vote submitted');        
+      }
 
+      handleReset();
+      
     }
 
     
