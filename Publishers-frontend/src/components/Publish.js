@@ -21,7 +21,9 @@ function Publish() {
     const[newsContent, setnewsContent] = useState('');
     const[newsStatus, setnewsStatus] = useState(0);
 
-    const handleOnSubmit = async ()=>{     
+    const handleOnSubmit = async (e)=>{     
+        e.preventDefault();
+
         try{   
         const url = `http://localhost:5001/publish`;    
         setnewsStatus(0);    
@@ -37,6 +39,9 @@ function Publish() {
 
         data = await data.json();
         window.alert("Article submitted !!!");
+
+        setnewsTitle('');
+        setnewsContent('');
 
     }
     catch(e){
@@ -62,7 +67,8 @@ function Publish() {
                                 <label for="newsTitle" className="h2">News Title</label>
                                 <textarea id="news_title" onChange={(e)=>{
                                     setnewsTitle(e.target.value);                                    
-                                }} 
+                                }}  
+                                value={newsTitle} 
                                 className="form-control" rows="1"></textarea>
                             </div>
 
@@ -70,11 +76,12 @@ function Publish() {
                             <div className="form-group text-light">
                                 <label for="newsContent" className="h2">News Content</label>
                                 <textarea id="news_content" onChange={(e)=>{
-                                    setnewsContent(e.target.value); }}
+                                    setnewsContent(e.target.value); }} 
+                                    value={newsContent}
                                 className="form-control" rows="15"></textarea>
                             </div>
                             <div className="d-flex justify-content-center">
-                                <button type="button" onClick={handleOnSubmit} className="btn btn-primary" >Submit Article</button>
+                                <button disabled={ !newsTitle || !newsContent } type="button" onClick={handleOnSubmit} className="btn btn-primary" >Submit Article</button>
                             </div>
                         </form>
                     </div>
@@ -84,6 +91,5 @@ function Publish() {
         </>
     );
 }
-
 
 export default Publish;
