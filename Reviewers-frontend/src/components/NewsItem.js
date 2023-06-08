@@ -26,7 +26,7 @@ const NewsItem = (props) => {
       console.log("Not vote value , "+"Vote value : "+ voteValue);                  
     }
     else {      
-      NotificationManager.success('Your vote for the news : \n'+ props.title + 'is : '+voteValue.toUpperCase(),'Vote submitted');
+      NotificationManager.success('Your vote for the news - \"'+ props.title + '\" is : '+voteValue.toUpperCase(),'Vote submitted');
       handleReset();
 
     }
