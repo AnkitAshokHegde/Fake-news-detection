@@ -39,6 +39,9 @@ const NewsItem = (props) => {
         "Are you sure ?  Your vote value is : \" "+voteValue.toUpperCase() + " \""
       )
       if (confirmBox === true) {
+
+
+
         NotificationManager.success('Your vote for the news title - \"'+ props.title + '\" is : '+voteValue.toUpperCase(),'Vote submitted');        
         hideComponent();
       }
@@ -62,7 +65,7 @@ const NewsItem = (props) => {
         <div className="card-body">
           
           <h5 className="card-title">{props.title}</h5>          
-          <p className="card-text">{props.description}</p>                    
+          <p className="card-text">{props.description}</p>                           
 
           <form action="#" onSubmit={handleVote}>
             <div className="d-flex justify-content-around">
