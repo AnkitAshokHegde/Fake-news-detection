@@ -53,7 +53,9 @@ function App(props) {
           <Route exact path="/">
             <NotificationContainer />
             {isConnected ?
-              <News key={"general"} pageSize={9}/> :
+              <News key={"general"} pageSize={9} 
+              walletAccountAddress={walletAddress}
+              /> :
               <div className="m-5 d-flex flex-column justify-content-center">
                  <div className="m-5 d-flex justify-content-center">
                 <h1 className="text-white ">User not connected with MetaMask</h1>

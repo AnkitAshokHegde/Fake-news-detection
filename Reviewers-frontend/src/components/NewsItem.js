@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRefresh } from '@fortawesome/free-solid-svg-icons'
 import 'react-notifications/lib/notifications.css';
@@ -10,6 +10,14 @@ const NewsItem = (props) => {
   const [showPopup, setshowPopup] = useState(false);
   const [voteValue, setvoteValue] = useState('');
   const [isShown, setisShown] = useState(true);
+
+  const votedNewsId = JSON.parse(localStorage.getItem('items'));
+  const [items, setItems] = useState(votedNewsId);
+  // const [items, setItems] = useState([]);
+
+  useEffect(()=>{
+    localStorage.setItem('items', JSON.stringify(items));
+  },[]);
 
   const handleOptionChnage = (event) => {
     setvoteValue(event.target.value);
@@ -28,32 +36,30 @@ const NewsItem = (props) => {
   }
 
   const isAlreadyVoted = (address, news_id)=>{
-    
+    if(address==props.walletAccountAddress ){
+      // if(voted_news_id.find)      
+    }
   }
 
   const handleVote = (e) => {
 
-    e.preventDefault();
+    e.preventDefault();    
 
-    if (!voteValue) {
-      console.log("Not vote value , "+"Vote value : "+ voteValue);                  
-    }
-    else {      
+    if (voteValue) {
       const confirmBox = window.confirm(
         "Are you sure ?  Your vote value is : \" "+voteValue.toUpperCase() + " \""
       )
       if (confirmBox === true) {
 
         // Your code for voting transfer here
+        items.append("K");
 
-        NotificationManager.success('Your vote for the news title - \"'+ props.title + '\" is : '+voteValue.toUpperCase(),'Vote submitted');        
+        NotificationManager.success('Your vote for the news title - \"'+ props.title + '\" is : '+voteValue.toUpperCase(),'Vote submitted');                
         hideComponent();
       }
 
       handleReset();
-      
-      
-    }
+    }   
     
     togglePopup();
 
@@ -61,8 +67,7 @@ const NewsItem = (props) => {
 
 
   return (    
-    <div className="my-3">
-      <NotificationContainer />
+    <div className="my-3">      
       {isShown &&
         <div className="card">
 

@@ -7,47 +7,8 @@ import { injected } from "./wallet/connectors"
 
 import { useState } from "react";
 import { ethers } from "ethers";
-
   
 function Navbar(props){ 
-
-// const [walletAddress, setWalletAddress] = useState("");
-
-  
-//   async function requestAccount() {
-
-//     console.log("Requesting accounts .....");
-
-//     if (window.ethereum) {
-//       console.log("Metamsk Detected");
-
-//       try {
-//         const accounts = await window.ethereum.request({
-//           method: "eth_requestAccounts",
-//         });
-//         console.log(accounts);
-//         setWalletAddress(accounts[0]);        
-//       }
-//       catch (error) {
-//         console.log("Error connecting the wallet");
-//       }
-
-//     }
-
-//     else {
-//       console.log("Meta mask not detected");
-//     }
-//   }
-
-
-//   async function connectWallet(){
-//     if(typeof window.ethereum !== 'undefined'){
-//       await requestAccount();
-
-//       const provider  = new ethers.BrowserProvider(window.ethereum);
-//     }
-//   }
-  
 
     return (
       <nav className="navbar navbar-expand-lg navbar-light ">
