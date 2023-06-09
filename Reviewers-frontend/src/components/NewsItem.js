@@ -27,6 +27,10 @@ const NewsItem = (props) => {
     setshowPopup(!showPopup);
   }
 
+  const isAlreadyVoted = (address, news_id)=>{
+    
+  }
+
   const handleVote = (e) => {
 
     e.preventDefault();

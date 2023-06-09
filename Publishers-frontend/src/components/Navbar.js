@@ -64,7 +64,7 @@ function Navbar(props){
           </ul>
           <div className="d-flex flex-column">
             {/* <button className="btn btn-primary" onClick={requestAccount}>Connect to wallet</button> */}
-            <small> Wallet Connected with adddress :</small>
+            <small> Wallet adddress :</small>
             <small> {props.walletAccountAddress}</small>
           </div>
 
