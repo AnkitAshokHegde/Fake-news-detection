@@ -9,6 +9,7 @@ const NewsItem = (props) => {
 
   const [showPopup, setshowPopup] = useState(false);
   const [voteValue, setvoteValue] = useState('');
+  const [isShown, setisShown] = useState(true);
 
   const handleOptionChnage = (event) => {
     setvoteValue(event.target.value);
@@ -16,6 +17,14 @@ const NewsItem = (props) => {
 
   const handleReset = () => {
     setvoteValue('');
+  }
+
+  const hideComponent = ()=>{
+    setisShown(false);
+  }
+
+  const togglePopup = () => {
+    setshowPopup(!showPopup);
   }
 
   const handleVote = (e) => {
@@ -27,34 +36,33 @@ const NewsItem = (props) => {
     }
     else {      
       const confirmBox = window.confirm(
-        "Are you sure ?  your vote value is : \" "+voteValue.toUpperCase() + " \""
+        "Are you sure ?  Your vote value is : \" "+voteValue.toUpperCase() + " \""
       )
       if (confirmBox === true) {
-        NotificationManager.success('Your vote for the news - \"'+ props.title + '\" is : '+voteValue.toUpperCase(),'Vote submitted');        
+        NotificationManager.success('Your vote for the news title - \"'+ props.title + '\" is : '+voteValue.toUpperCase(),'Vote submitted');        
+        hideComponent();
       }
 
       handleReset();
       
+      
     }
-
     
     togglePopup();
 
   }
 
-  const togglePopup = () => {
-    setshowPopup(!showPopup);
-  }
 
   return (    
     <div className="my-3">
       <NotificationContainer />
-      <div className="card">
+      {isShown &&
+        <div className="card">
 
         <div className="card-body">
           
           <h5 className="card-title">{props.title}</h5>          
-          <p className="card-text">{props.description}</p>          
+          <p className="card-text">{props.description}</p>                    
 
           <form action="#" onSubmit={handleVote}>
             <div className="d-flex justify-content-around">
@@ -87,7 +95,7 @@ const NewsItem = (props) => {
               {/* <a
               href={props.newsURL}
               target="_blank"
-              className="btn btn-sm btn-primary"
+              className="btn btn-sm btn-primary text-white"
               >
               Read more
             </a> */}
@@ -100,7 +108,7 @@ const NewsItem = (props) => {
             </div>
           </form>
         </div>
-      </div>
+      </div>}
     </div>
   );
 };
