@@ -17,7 +17,7 @@ export default function App() {
   const [isConnected, setisConnected] = useState(false);
   const [walletAddress, setWalletAddress] = useState('');
 
-  const checkMetaMaskConnection = async () => {
+  const checkAndConnectWithMetaMask = async () => {
     if (window.ethereum) {
       try {
         // Request account access
@@ -30,6 +30,7 @@ export default function App() {
       } catch (error) {
         NotificationManager.error('User not connected with meta mask', 'Not connected');
         console.log('User is not connected to MetaMask');
+        console.log('User is not connected to MetaMask');
       }
     } else {
       NotificationManager.error('Metamask not installed', 'Not connected');
@@ -38,7 +39,7 @@ export default function App() {
   };
 
   useEffect(() => {
-    checkMetaMaskConnection();
+    checkAndConnectWithMetaMask();
   }, []);
 
 
@@ -59,6 +60,9 @@ export default function App() {
                 </div>
                 <div className="m-5 d-flex justify-content-center">
                   <p className="text-white">Please connect with metamask or install it if not installed</p>
+                </div>
+                <div className="m-5 d-flex justify-content-center">
+                <button className="btn btn-primary text-white" onClick={checkAndConnectWithMetaMask}>Connect to wallet</button>
                 </div>
               </div>
             }
