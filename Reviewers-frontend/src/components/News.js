@@ -184,28 +184,7 @@ const News = (props)=>{
             ))}
         </div>
       </div>
-      {/* previous pgno. and next buttons */}
-      <div className="container-fluid page-button my-4 mx-2">
-        <button
-          disabled={pg <= 1}
-          className="btn-sm btn btn-color mx-5"
-          onClick={handlePrevious}
-        >
-          {/* Left long arrow */}
-          &#10232;
-        </button>
-        <div className="page-count">
-          {pg}
-          </div>
-        <button
-          disabled={!(pg + 1 <= Math.ceil(totalArticles / 9))}
-          className="btn-sm btn btn-color mx-5"
-          onClick={handleNext}
-        >
-          {/* Right long arrow */}
-          &#10233;
-        </button>
-      </div>
+      
     </>
   );
 };

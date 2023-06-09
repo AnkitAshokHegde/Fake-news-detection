@@ -40,7 +40,7 @@ const NewsItem = (props) => {
       )
       if (confirmBox === true) {
 
-
+        // Your code for voting transfer here
 
         NotificationManager.success('Your vote for the news title - \"'+ props.title + '\" is : '+voteValue.toUpperCase(),'Vote submitted');        
         hideComponent();

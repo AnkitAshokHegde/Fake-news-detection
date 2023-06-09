@@ -9,44 +9,44 @@ import { useState } from "react";
 import { ethers } from "ethers";
 
   
-function Navbar(){ 
+function Navbar(props){ 
 
-const [walletAddress, setWalletAddress] = useState("");
+// const [walletAddress, setWalletAddress] = useState("");
 
   
-  async function requestAccount() {
+//   async function requestAccount() {
 
-    console.log("Requesting accounts .....");
+//     console.log("Requesting accounts .....");
 
-    if (window.ethereum) {
-      console.log("Metamsk Detected");
+//     if (window.ethereum) {
+//       console.log("Metamsk Detected");
 
-      try {
-        const accounts = await window.ethereum.request({
-          method: "eth_requestAccounts",
-        });
-        console.log(accounts);
-        setWalletAddress(accounts[0]);
-      }
-      catch (error) {
-        console.log("Error connecting the wallet");
-      }
+//       try {
+//         const accounts = await window.ethereum.request({
+//           method: "eth_requestAccounts",
+//         });
+//         console.log(accounts);
+//         setWalletAddress(accounts[0]);
+//       }
+//       catch (error) {
+//         console.log("Error connecting the wallet");
+//       }
 
-    }
+//     }
 
-    else {
-      console.log("Meta mask not detected");
-    }
-  }
+//     else {
+//       console.log("Meta mask not detected");
+//     }
+//   }
 
 
-  async function connectWallet(){
-    if(typeof window.ethereum !== 'undefined'){
-      await requestAccount();
+  // async function connectWallet(){
+  //   if(typeof window.ethereum !== 'undefined'){
+  //     await requestAccount();
 
-      const provider  = new ethers.BrowserProvider(window.ethereum);
-    }
-  }
+  //     const provider  = new ethers.BrowserProvider(window.ethereum);
+  //   }
+  // }
   
 
     return (
@@ -62,10 +62,10 @@ const [walletAddress, setWalletAddress] = useState("");
               </a>
             </li>
           </ul>
-          <div className="d-flex flex-column">
-            <button className="btn btn-primary" onClick={requestAccount}>Connect to wallet</button>
-            <small> Wallet Connected with adddress :</small>
-            <small> {walletAddress}</small>
+          <div className="d-flex flex-column justify-content-center">
+            {/* <button className="btn btn-primary" onClick={requestAccount}>Connect to wallet</button> */}
+            <small> Wallet adddress :</small>
+            <small> {props.walletAccountAddress}</small>
           </div>
 
         </div>
