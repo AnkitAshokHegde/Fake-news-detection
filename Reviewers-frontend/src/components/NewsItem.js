@@ -43,7 +43,9 @@ const NewsItem = (props) => {
 
   const handleVote = (e) => {
 
-    e.preventDefault();    
+    e.preventDefault();   
+    
+    // console.log("Account list : "+props.accountsList);
 
     if (voteValue) {
       const confirmBox = window.confirm(
@@ -51,8 +53,7 @@ const NewsItem = (props) => {
       )
       if (confirmBox === true) {
 
-        // Your code for voting transfer here
-        items.append("K");
+        // Your code for voting transfer here        
 
         NotificationManager.success('Your vote for the news title - \"'+ props.title + '\" is : '+voteValue.toUpperCase(),'Vote submitted');                
         hideComponent();

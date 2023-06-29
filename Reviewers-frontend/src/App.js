@@ -12,14 +12,20 @@ import { NotificationContainer, NotificationManager } from "react-notifications"
 
 function App(props) {
 
+  let accounts;
+
   const [isConnected, setisConnected] = useState(false);
   const [walletAddress, setWalletAddress] = useState('');
+  // const [accounts, setAccounts] = useState([]);
 
   const checkAndConnectWithMetaMask = async () => {
     if (window.ethereum) {
       try {
         // Request account access
-        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        // let ac = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        // setAccounts( await ac );        
+        accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        
         NotificationManager.info('User connected with meta mask', 'Connected');
         console.log('User is connected to MetaMask');
         setisConnected(true);
@@ -55,6 +61,7 @@ function App(props) {
             {isConnected ?
               <News key={"general"} pageSize={9} 
               walletAccountAddress={walletAddress}
+              accountsList={accounts}
               /> :
               <div className="m-5 d-flex flex-column justify-content-center">
                  <div className="m-5 d-flex justify-content-center">

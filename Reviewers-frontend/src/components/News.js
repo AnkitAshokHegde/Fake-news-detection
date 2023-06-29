@@ -45,8 +45,9 @@ const News = (props)=>{
                   //     : "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/120px-No_image_available.svg.png"
                   // }
                   // newsURL={items.url}
-                  obj_id={(items._id)}
+                  // obj_id={(items._id)}
                   walletAccountAddress={props.walletAccountAddress}
+                  accountsList={props.accountsList}
                   title={(items.newsTitle? items.newsTitle.slice(0,45) : "") + "..."}
                   description={(items.newsContent? items.newsContent.slice(0,150) : "") + "..."}
                 />
